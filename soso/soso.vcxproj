@@ -127,10 +127,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Interpolation.cpp" />
     <ClCompile Include="point.cpp" />
     <ClCompile Include="soso.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Interpolation.h" />
     <ClInclude Include="point.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
