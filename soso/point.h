@@ -21,6 +21,7 @@ public:
 	friend std::ostream& operator<<(std::ostream& poin, const point& myPoint);
 
 	friend std::istream& operator>>(std::istream& poin, point& myPoint);
+	point& operator=(const point& other);
 
 	double calcDistance(point& anotherPoint);
 

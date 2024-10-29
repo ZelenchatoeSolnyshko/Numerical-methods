@@ -39,6 +39,15 @@ double point::getY()
 }
 
 
+point& point::operator=(const point& other)
+{
+	if (this != &other) { // Проверка самоприсвоения
+		this->x = other.x;
+		this->y = other.y;
+	}
+	return *this;
+}
+
 double point::calcDistance(point& anotherPoint)
 {
 	return sqrt(pow((anotherPoint.x - x), 2) + pow((anotherPoint.y - y), 2));;
