@@ -11,27 +11,28 @@ typedef struct {
 } Point;
 
 
-double lagrangeInterpolation(int n, Point* points, double target_x) 
+double lagrangeInterpolation(int n, Point* points, double value) 
 {
-    double result = 0.0;
+    double res = 0.0;
 
     for (int i = 0; i < n; i++) {
-        double term = points[i].y;
+        double tmp = points[i].y;
         for (int j = 0; j < n; j++) {
             if (j != i) {
-                term *= (target_x - points[j].x) / (points[i].x - points[j].x);
+                tmp *= (value - points[j].x) / (points[i].x - points[j].x);
             }
         }
-        result += term;
+        res += tmp;
     }
 
-    return result;
+    return res;
 }
 
-void printets()
+double f(double x)
 {
-
+    return pow(x, 3) + 2 * x;
 }
+
 
 int main()
 {
@@ -49,12 +50,10 @@ int main()
         cin >> points1[i].y;
     }
     double value1;
-    cout << "Enter the value for the interpolation for first function: ";
+    cout << "Enter the value for the interpolation for first function ";
     cin >> value1;
 
-    double itog = lagrangeInterpolation(n, points1, value1);
-
-    cout << "The Value  of interpotion of Lagrange for first function for value " << value1 << " is: " << itog << endl;
+    cout << "The Value  of interpotion of Lagrange for first function for value " << value1 << " is: " << lagrangeInterpolation(n, points1, value1) << endl;
 
 
 
@@ -72,15 +71,14 @@ int main()
     }
     for (int j = 0; j < m; j++)
     {
-        points2[j].y = pow(points2[j].x, 3) + 2 * points2[j].x;
+        points2[j].y = f(points2[j].x);
     }
     double value2;
     cout << "Enter the value for the interpolation for second function: ";
     cin >> value2;
 
-    double res = lagrangeInterpolation(m, points2, value2);
+    cout << "The Value  of interpotion of Lagrange for second function for value " << value2 << " is " << lagrangeInterpolation(m, points2, value2) << endl;
 
-    cout << "The Value  of interpotion of Lagrange for second function for value " << value2 << " is: " << res << endl;
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
