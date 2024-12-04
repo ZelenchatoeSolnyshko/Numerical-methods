@@ -50,10 +50,10 @@ int main()
         cin >> points1[i].y;
     }
     double value1;
-    cout << "Enter the value for the interpolation for first function ";
+    cout << "Enter the value for the interpolation for the first function ";
     cin >> value1;
 
-    cout << "The Value  of interpotion of Lagrange for first function for value " << value1 << " is: " << lagrangeInterpolation(n, points1, value1) << endl;
+    cout << "The Value  of interpotion of Lagrange for the first function for " << value1 << " is: " << lagrangeInterpolation(n, points1, value1) << endl;
 
 
 
@@ -74,10 +74,10 @@ int main()
         points2[j].y = f(points2[j].x);
     }
     double value2;
-    cout << "Enter the value for the interpolation for second function: ";
+    cout << "Enter the value for the interpolation for the second function: ";
     cin >> value2;
 
-    cout << "The Value  of interpotion of Lagrange for second function for value " << value2 << " is " << lagrangeInterpolation(m, points2, value2) << endl;
+    cout << "The Value  of interpotion of Lagrange for the second function for " << value2 << " is " << lagrangeInterpolation(m, points2, value2) << endl;
 
 }
 
