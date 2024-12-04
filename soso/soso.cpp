@@ -35,52 +35,7 @@ void printets()
 
 int main()
 {
-    //первая функция
-    int n;
-
-    cout << "Enter the size of first function: ";
-    cin >> n;
-    Point points1[222];
-
-
-    cout << "Enter all points (x y):";
-    for (int i = 0; i < n; i++) {
-        cin >> points1[i].x;
-        cin >> points1[i].y;
-    }
-    double value1;
-    cout << "Enter the value for the interpolation for first function: ";
-    cin >> value1;
-
-    double itog = lagrangeInterpolation(n, points1, value1);
-
-    cout << "The Value  of interpotion of Lagrange for first function for value " << value1 << " is: " << itog << endl;
-
-
-
-
-
-
-    //вторая функция
-    int m;
-    cout << "Enter the size of second function: ";
-    cin >> m;
-    Point points2[222];
-    cout << "Enter all arguments:";
-    for (int i = 0; i < m; i++) {
-        cin >> points2[i].x;
-    }
-    for (int j = 0; j < m; j++)
-    {
-        points2[j].y = pow(points2[j].x, 3) + 2 * points2[j].x;
-    }
-    double value2;
-    cout << "Enter the value for the interpolation for second function: ";
-    cin >> value2;
-
-    double res = lagrangeInterpolation(m, points2, value2);
-
-    cout << "The Value  of interpotion of Lagrange for second function for value " << value2 << " is: " << res << endl;
+    cout << "Hello, bitch, sosi kirpitch :)" << endl;
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
