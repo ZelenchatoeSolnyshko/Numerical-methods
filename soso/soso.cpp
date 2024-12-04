@@ -5,33 +5,6 @@
 #include <vector>
 
 using namespace std;
-typedef struct {
-    double x;
-    double y;
-} Point;
-
-
-double lagrangeInterpolation(int n, Point* points, double target_x) 
-{
-    double result = 0.0;
-
-    for (int i = 0; i < n; i++) {
-        double term = points[i].y;
-        for (int j = 0; j < n; j++) {
-            if (j != i) {
-                term *= (target_x - points[j].x) / (points[i].x - points[j].x);
-            }
-        }
-        result += term;
-    }
-
-    return result;
-}
-
-void printets()
-{
-
-}
 
 int main()
 {
