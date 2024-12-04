@@ -2,13 +2,80 @@
 //
 
 #include <iostream>
-#include <vector>
+#include <functional>
+#include <math.h>
 
 using namespace std;
 
-int main()
+double squareRectangleIntegration(double (*f)(double), double min, double max, int n) {
+    double h = (max - min) / n;  
+    double s = 0.0;
+
+    for (int i = 0; i < n; i++) 
+    {
+  
+        double x = min + i * h;
+        s += f(x) * h;  
+    }
+
+    return s;
+}
+
+double theRungeRule(double (*f)(double), double min, double max, int n)
 {
-    cout << "Hello, bitch, sosi kirpitch :)" << endl;
+    int x2n = n * 2;
+    return (squareRectangleIntegration(f, min, max, x2n) - squareRectangleIntegration(f, min, max, n)) / 3.0;
+}
+
+double f1(double x) 
+{
+    return 4 * x - 3;  
+}
+
+double f2(double x)
+{
+    return x * sin(x);
+}
+
+int main() {
+
+    //первое задание
+    int n;
+    cout << "Enter the range of integration for the first function: ";
+    cin >> n;
+
+    double a;
+    double b;
+    cout << "Enter the limits of integration for the first function: ";
+    cin >> a;
+    cin >> b;
+
+    cout << "Real value of the integral for the first function is   52" << endl;
+
+    cout << "The value of rectangle in range from " << a << "to " << b << "for the first function is    " << squareRectangleIntegration(f1, a, b, n) << endl;
+
+    cout << "Error estiomation according to the Runge Rule for the first function is   " << theRungeRule(f1, a, b, n) << endl;
+
+
+
+
+    //второе задание
+    int m;
+    cout << "Enter the range of integration for the second function: ";
+    cin >> m;
+
+    double c;
+    double d;
+    cout << "Enter the limits of integration for the second function: ";
+    cin >> c;
+    cin >> d;
+
+    cout << "Real value of the integral for the second function is   - 6.28319" << endl;
+
+    cout << "The value of rectangle in range from " << c << "to " << d << "for the second function is    " << squareRectangleIntegration(f2, c, d, m) << endl;
+
+    cout << "Error estiomation according to the Runge Rule for the second function is   " << theRungeRule(f2, c, d, m) << endl;
+
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
