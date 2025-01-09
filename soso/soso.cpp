@@ -2,13 +2,56 @@
 //
 
 #include <iostream>
-#include <vector>
 
 using namespace std;
 
-int main()
+
+typedef struct {
+    double x;
+    double y;
+} Point;
+
+double linearInterpolation(Point p1, Point p2, double value) 
 {
-    cout << "Hello, bitch, sosi kirpitch :)" << endl;
+    if (value < p1.x || value > p2.x) 
+    {
+        cout << "The value isn't between  " << p1.x << "  and  " << p2.x << endl;
+        return 0.0;
+    }
+    return p1.y + (p2.y - p1.y) * (value - p1.x) / (p2.x - p1.x);
+}
+
+int main() {
+    int n;
+    cout << "Enter the size of the array: " << endl;
+    cin >> n;
+
+    Point points[222];
+    cout << "Enter all x: " << endl;
+    for (int i = 0; i < n; i++) 
+    {
+        cin >> points[i].x;
+    }
+    cout << "Enter all y: " << endl;
+    for (int i = 0; i < n; i++) 
+    {
+        cin >> points[i].y;
+    }
+
+    double value;
+    cout << "Enter the value of interpolation: " << endl;
+    cin >> value;
+
+    
+    for (int i = 0; i < n - 1; i++) {
+        if (value >= points[i].x && value <= points[i + 1].x) {
+            double res = linearInterpolation(points[i], points[i + 1], value);
+            cout << "The value of linear interpolation is  " << res << endl;
+            return;
+        }
+    }
+
+    cout << "The value is not within the range of the interpolation" << endl;
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
