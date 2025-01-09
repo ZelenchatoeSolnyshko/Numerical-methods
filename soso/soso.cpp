@@ -2,15 +2,18 @@
 //
 
 #include <iostream>
-#include <vector>
 
 using namespace std;
-
-int main()
+int main() 
 {
-    cout << "Hello, bitch, sosi kirpitch :)" << endl;
-}
+    double eps = 1.0;
 
+    while ((1.0 + (eps / 2.0)) != 1.0) {
+        eps /= 2.0; 
+        cout << eps << endl;
+    }
+    cout << "This is machine epsilon - " << eps << endl;
+}
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
 // Отладка программы: F5 или меню "Отладка" > "Запустить отладку"
 
