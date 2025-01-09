@@ -2,6 +2,7 @@
 //
 
 #include <iostream>
+#include <cmath>
 
 using namespace std;
 
@@ -11,47 +12,48 @@ typedef struct {
     double y;
 } Point;
 
-double linearInterpolation(Point p1, Point p2, double value) 
+double left(Point p1, Point p2, double h) 
 {
-    if (value < p1.x || value > p2.x) 
-    {
-        cout << "The value isn't between  " << p1.x << "  and  " << p2.x << endl;
-        return 0.0;
-    }
-    return p1.y + (p2.y - p1.y) * (value - p1.x) / (p2.x - p1.x);
+    return (p2.y - p1.y)/h;
 }
 
+double right(Point p1, Point p2, double h)
+{
+    return (p2.y - p1.y) / h;
+}
+
+
+double central(Point p1, Point p2, double h)
+{
+    return (p2.y - p1.y) / 2 * h;
+}
+
+
 int main() {
-    int n;
-    cout << "Enter the size of the array: " << endl;
-    cin >> n;
 
     Point points[222];
-    cout << "Enter all x: " << endl;
-    for (int i = 0; i < n; i++) 
+
+    
+    for (int i = 0; i < 180; i++) 
     {
-        cin >> points[i].x;
-    }
-    cout << "Enter all y: " << endl;
-    for (int i = 0; i < n; i++) 
-    {
-        cin >> points[i].y;
+        points[i].x = i;
+        points[i].y = sin(i);
     }
 
     double value;
-    cout << "Enter the value of interpolation: " << endl;
+    cout << "Enter the value of differentiation: " << endl;
     cin >> value;
 
     
-    for (int i = 0; i < n - 1; i++) {
+    for (int i = 0; i < 180 - 2; i++) {
         if (value >= points[i].x && value <= points[i + 1].x) {
-            double res = linearInterpolation(points[i], points[i + 1], value);
-            cout << "The value of linear interpolation is  " << res << endl;
-            return;
+            cout << "The value of the left difference derivative is " << left((Point) points[i - 1], (Point) points[i], 1) << endl;
+            cout << "The value of the right difference derivative is " << right((Point) points[i], (Point) points[i + 1], 1) << endl;
+            cout << "The value of the central difference derivative is " << central((Point) points[i - 1], (Point) points[i + 1], 1) << endl;
+            return 0;
         }
     }
-
-    cout << "The value is not within the range of the interpolation" << endl;
+    return 0;
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
